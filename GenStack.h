@@ -2,6 +2,7 @@
 
 using namespace std;
 
+template <class T>
 class GenStack
 {
   public:
@@ -9,9 +10,9 @@ class GenStack
     GenStack(int maxSize);//overloaded constructor
     ~GenStack();//destructor
 
-    void push(char d);
-    char pop();
-    char peek();//aka top()
+    void push(T d);
+    T pop();
+    T peek();//aka top()
 
     int getSize();
     bool isEmpty();
@@ -19,6 +20,8 @@ class GenStack
 
     int size;
     int top;
+    //T popping;
 
-    char *myArray;
+    T *myArray;
+    T *doubleArray;
 };

@@ -1,61 +1,118 @@
 #include "Genstack.h"
 #include <iostream>
+#include <array>
 
 using namespace std;
-
-GenStack::GenStack()//default constructor
+template <class T>
+GenStack<T>::GenStack()//default constructor
 {
   //initialize variable to default values
-  myArray = new char[128];
+  myArray = new T[128];
   size = 128;
   top = -1;
 }
 
-GenStack::GenStack(int maxSize)//overloaded constructor
+template <class T>
+GenStack<T>::GenStack(int maxSize)//overloaded constructor
 {
-  myArray = new char[maxSize];
+  myArray = new T[maxSize];
   size = maxSize;
   top = -1;
 }
 
-GenStack::~GenStack()//destructor
+template <class T>
+GenStack<T>::~GenStack()//destructor
 {
   delete myArray;
-  delete size;
-  delete top;
+  //delete *size;
+  //delete *top;
 }
 
-void GenStack::push(char d)
+template <class T>
+void GenStack<T>::push(T d)
 {
   //make sure stack is not full
   //you are responsible for error/bound checking
-  myArray[++top] = d;
+  if (!isFull())
+  {
+    myArray[++top] = d;
+  }
+  else
+  {
+    size += size;
+    doubleArray = new T[size];
+    //for (T item& : myArray)
+    //{
+    /*while (!top == -1)
+    {
+      T temp = myArray[top--];
+      doubleArray[0] = temp;
+    }*/
+    doubleArray = myArray;
+    cout << myArray << endl;
+    cout << doubleArray << endl;
+    cout << sizeof(doubleArray) << endl;
+    //delete myArray;
+
+    myArray = new T[size];
+
+    myArray = doubleArray;
+    cout << myArray << endl;
+    cout << sizeof(myArray) << endl;
+
+    myArray[++top] = d;
+    cout << myArray << endl;
+    cout << sizeof(myArray) << endl;
+    /*while (!top == -1)
+    {
+      T temp = doubleArray[top--];
+      myArray[0] = temp;
+    }*/
+
+
+
+    //doubleArray[0] = myArray.pop();
+    //}
+
+  }
 }
 
-char GenStack::pop()
+template <class T>
+T GenStack<T>::pop()
 {
   //error checking (is it not empty)
-  char temp = myArray[top--];
-  return temp;
+  if (!isEmpty())
+  {
+    T temp = myArray[top--];
+    return temp;
+  }
+  else
+  {
+    throw "Stack is Empty EXCEPTION!";
+  }
 }
 
-char GenStack::peek()
+template <class T>
+T GenStack<T>::peek()
 {
   //error checking
   return myArray[top];
 }
 
-bool GenStack::isFull()
+template <class T>
+bool GenStack<T>::isFull()
 {
   return (top == size-1);
 }
 
-bool GenStack::isEmpty()
+template <class T>
+bool GenStack<T>::isEmpty()
 {
   return (top == -1);
 }
 
-int GenStack::getSize()
+template <class T>
+int GenStack<T>::getSize()
 {
   return top+1;
 }
