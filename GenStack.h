@@ -10,7 +10,7 @@ class GenStack
     GenStack(int maxSize);//overloaded constructor
     ~GenStack();//destructor
 
-    void push(T d);
+    int push(T d);
     T pop();
     T peek();//aka top()
 

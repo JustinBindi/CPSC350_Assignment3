@@ -23,19 +23,20 @@ GenStack<T>::GenStack(int maxSize)//overloaded constructor
 template <class T>
 GenStack<T>::~GenStack()//destructor
 {
-  delete myArray;
+  //delete myArray;
   //delete *size;
   //delete *top;
 }
 
 template <class T>
-void GenStack<T>::push(T d)
+int GenStack<T>::push(T d)
 {
   //make sure stack is not full
   //you are responsible for error/bound checking
   if (!isFull())
   {
     myArray[++top] = d;
+    return 0;
   }
   else
   {
@@ -75,6 +76,7 @@ void GenStack<T>::push(T d)
     //}
 
   }
+  return 0;
 }
 
 template <class T>

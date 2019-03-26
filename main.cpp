@@ -1,17 +1,25 @@
-#include "GenStack.cpp"
+#include "syntaxChecker.cpp"
 #include <iostream>
 
 using namespace std;
 
 int main (int argc, char **argv)
 {
-  GenStack<char> myStack(3);
+  //GenStack<char> myStack(3);
+  string fileName;
+  syntaxChecker checker(128);
+
   //GenStack<int> myStack(22); //for a later build (more complex)
   try
   {
     //myStack.pop();
 
-    myStack.push('R');
+
+    cin >> fileName;
+    checker.readFile(fileName);
+    //readFile(fileName);
+
+    /*myStack.push('R');
     myStack.push('E');
     myStack.push('N');
     myStack.push('E');
@@ -28,7 +36,7 @@ int main (int argc, char **argv)
     while (!myStack.isEmpty())
     {
       cout << "popping :" << myStack.pop() << endl;
-    }
+    }*/
 
     //cout << myStack.pop() << endl; //sometimes an error (stack is empty)
   }
