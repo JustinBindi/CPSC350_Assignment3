@@ -5,40 +5,14 @@ using namespace std;
 
 int main (int argc, char **argv)
 {
-  //GenStack<char> myStack(3);
   string fileName;
-  syntaxChecker checker(128);
+  syntaxChecker checker(0);
 
-  //GenStack<int> myStack(22); //for a later build (more complex)
   try
   {
-    //myStack.pop();
-
-
+    cout << "Please insert a file name:" << endl;
     cin >> fileName;
-    checker.readFile(fileName);
-    //readFile(fileName);
-
-    /*myStack.push('R');
-    myStack.push('E');
-    myStack.push('N');
-    myStack.push('E');
-
-    cout << "popping :" << myStack.pop() << endl;
-    cout << "peek :" << myStack.peek() << endl;
-
-    myStack.push('F');
-    cout << "peek :" << myStack.peek() << endl;
-
-    myStack.push('Q');
-    cout << "peek :" << myStack.peek() << endl;
-
-    while (!myStack.isEmpty())
-    {
-      cout << "popping :" << myStack.pop() << endl;
-    }*/
-
-    //cout << myStack.pop() << endl; //sometimes an error (stack is empty)
+    checker.Checker(fileName);
   }
   catch (const char* msg)
   {

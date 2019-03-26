@@ -20,7 +20,6 @@ class GenStack
 
     int size;
     int top;
-    //T popping;
 
     T *myArray;
     T *doubleArray;
